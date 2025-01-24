@@ -1,5 +1,12 @@
+import { RouterProvider } from 'react-router-dom'
+import { ThemeProvider } from '@/context/ThemeContext'
+import { router } from './router'
+import './shared/styles/app.scss'
+
 export default function App() {
   return (
-    <h1>Test initializing</h1>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   )
 }
