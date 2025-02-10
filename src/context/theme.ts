@@ -7,6 +7,13 @@ declare module '@mui/material/styles' {
             headerIconHover: string
         }
         buttons: {
+            primary: {
+                bg: string
+                bgHover: string
+                ripple: string
+                text: string
+                border: string
+            }
             secondary: {
                 bg: string
                 bgHover: string
@@ -15,11 +22,15 @@ declare module '@mui/material/styles' {
                 border: string
             }
         }
+        links: {
+            form: string
+        }
         shadow: {
             boxShadow: string
         }
         border: {
             headerBorder: string
+            formBorder: string
         }
     }
     interface PaletteOptions {
@@ -28,6 +39,13 @@ declare module '@mui/material/styles' {
             headerIconHover: string
         }
         buttons?: {
+            primary: {
+                bg: string
+                bgHover: string
+                ripple: string
+                text: string
+                border: string
+            }
             secondary: {
                 bg: string
                 bgHover: string
@@ -36,11 +54,15 @@ declare module '@mui/material/styles' {
                 border: string
             }
         }
+        links: {
+            form: string
+        }
         shadow: {
             boxShadow: string
         }
         border: {
             headerBorder: string
+            formBorder: string
         }
     }
 }
@@ -64,6 +86,13 @@ export const lightTheme = createTheme({
             headerIconHover: '#b4b4b4',
         },
         buttons: {
+            primary: {
+                bg: '#00aefa',
+                bgHover: '#14b4fa',
+                ripple: 'rgba(191, 219, 243, 0.92)',
+                text: '#ffffff',
+                border: '#e3f2fd'
+            },
             secondary: {
                 bg: '#e3f2fd',
                 bgHover: '#cde3f5ee',
@@ -72,11 +101,15 @@ export const lightTheme = createTheme({
                 border: '#e3f2fd'
             }
         },
+        links: {
+            form: '#00aefa'
+        },
         shadow: {
             boxShadow: '0 13px 35px #00000014'
         },
         border: {
-            headerBorder: '1px solid #ebeced'
+            headerBorder: '1px solid #ebeced',
+            formBorder: '#666666'
         }
     },
     components: {
@@ -109,6 +142,13 @@ export const darkTheme = createTheme({
             headerIconHover: '#696969',
         },
         buttons: {
+            primary: {
+                bg: '#bb432c',
+                bgHover: '#ac422d',
+                ripple: 'rgba(224, 148, 133, 0.72)',
+                text: '#ffffff',
+                border: '#bb432c'
+            },
             secondary: {
                 bg: 'transparent',
                 bgHover: '#242527',
@@ -117,11 +157,15 @@ export const darkTheme = createTheme({
                 border: '#888888'
             }
         },
+        links: {
+            form: '#ff4d4d'
+        },
         shadow: {
             boxShadow: '0 13px 35px #00000014'
         },
         border: {
-            headerBorder: '1px solid #242527'
+            headerBorder: '1px solid #242527',
+            formBorder: '#c0c0c0'
         }
     },
     components: {

@@ -11,6 +11,20 @@ export const BaseButton = styled(MUIButton)(() => ({
     }
 }))
 
+export const PrimaryButton = styled(BaseButton)(({ theme }) => ({
+    backgroundColor: theme.palette.buttons.primary.bg,
+    color: theme.palette.buttons.primary.text,
+    border: `1px solid ${theme.palette.buttons.primary.border}`,
+    '.MuiTouchRipple-child': {
+        backgroundColor: `${theme.palette.buttons.primary.ripple} !important`
+    },
+    '&:hover': {
+        backgroundColor: theme.palette.buttons.primary.bgHover,
+        borderColor: theme.palette.buttons.primary.border
+    },
+    width: '100%'
+}))
+
 export const SecondaryButton = styled(BaseButton)(({ theme }) => ({
     backgroundColor: theme.palette.buttons.secondary.bg,
     color: theme.palette.buttons.secondary.text,
