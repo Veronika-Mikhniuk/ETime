@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { LangToggle } from '@/components/LangToggle'
 import { StyledLogoLink } from '@/components/styled/icons'
@@ -8,7 +9,7 @@ import SchoolIcon from '@mui/icons-material/School'
 import './header.scss'
 
 export function Header() {
-
+    const navigate = useNavigate()
     return (
         <StyledHeader className="header">
             <StyledLogoLink to="/home" className="header__logo">
@@ -23,7 +24,8 @@ export function Header() {
                 <div className="header__auth"> {/* //TODO: сделать в отдельный компонент */}
                     <Button
                         variant="secondary"
-                        className="auth-button">
+                        className="auth-button"
+                        onClick={() => navigate('/sign-in')}>
                         Sign In
                     </Button>
                     <Button

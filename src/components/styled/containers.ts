@@ -5,6 +5,12 @@ export const ContentWrapper = styled('div')(({ theme }) => ({
     boxShadow: theme.palette.shadow.boxShadow
 }))
 
+export const FormWrapper = styled('form')(({ theme }) => ({
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.palette.shadow.boxShadow,
+    borderRadius: '10px'
+}))
+
 export const WelcomeInfoWrapper = styled('div')(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark'
         ? 'transparent'
