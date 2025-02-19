@@ -21,3 +21,8 @@ export const StyledHeader = styled('header')(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
     borderBottom: theme.palette.border.headerBorder
 }))
+
+export const CaptchaWrapper = styled('div')(({ theme }) => ({
+    backgroundColor: theme.palette.captcha.background,
+    borderColor: theme.palette.captcha.border
+}))

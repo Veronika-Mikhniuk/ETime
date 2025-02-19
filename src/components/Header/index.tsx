@@ -30,7 +30,8 @@ export function Header() {
                     </Button>
                     <Button
                         variant="secondary"
-                        className="auth-button">
+                        className="auth-button"
+                        onClick={() => navigate('/sign-up')}>
                         Sign Up
                     </Button>
                 </div>

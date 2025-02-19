@@ -6,7 +6,7 @@ export const TextSecondary = styled('p')(({ theme }) => ({
     fontWeight: '400'
 }))
 
-export const HeaderSecondary = styled('h1')(({ theme }) => ({
+export const TitleSecondary = styled('h1')(({ theme }) => ({
     color: theme.palette.text.secondary,
     fontWeight: '400'
 }))
