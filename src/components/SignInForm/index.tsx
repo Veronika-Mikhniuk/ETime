@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { useTheme } from '@mui/material/styles'
 import { FormWrapper } from '@/components/styled/containers'
 import { Button } from '@/components/shared/Button'
-import { TextSecondary, HeaderSecondary, NavLinkStyled } from '@/components/styled/typography'
+import { TextSecondary, TitleSecondary, NavLinkStyled } from '@/components/styled/typography'
 import { TextFieldStyled } from '@/components/styled/form-fields'
 import { ISignInFormData } from './ISignInFromData'
 import { signInValidationRules } from '@/utils/signInValidation'
@@ -11,8 +12,9 @@ import { IconButton, InputAdornment } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import './signInForm.scss'
 
-export const SignInForm = () => {
+export function SignInForm() {
     const theme = useTheme()
+    const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm<ISignInFormData>()
     const [showPassword, setShowPassword] = useState(false)
 
@@ -23,7 +25,7 @@ export const SignInForm = () => {
     return (
         <FormWrapper className="signin-form" onSubmit={handleSubmit(onSubmit)}>
 
-            <HeaderSecondary className="signin-form__header">Sign In</HeaderSecondary>
+            <TitleSecondary className="signin-form__header">Sign In</TitleSecondary>
 
             <div className="signin-form__fields">
                 <TextFieldStyled
@@ -73,7 +75,10 @@ export const SignInForm = () => {
 
                 <div className="signin-form__signup">
                     <TextSecondary className="signin-form__signup-text">Don't have an account?</TextSecondary>
-                    <Button variant="secondary" className="signin-form__signup-btn">
+                    <Button
+                        variant="secondary"
+                        className="signin-form__signup-btn"
+                        onClick={() => { navigate('/sign-up') }}>
                         Sign Up
                     </Button>
                 </div>

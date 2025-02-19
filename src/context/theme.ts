@@ -32,6 +32,10 @@ declare module '@mui/material/styles' {
             headerBorder: string
             formBorder: string
         }
+        captcha: {
+            border: string
+            background: string
+        }
     }
     interface PaletteOptions {
         icons?: {
@@ -63,6 +67,10 @@ declare module '@mui/material/styles' {
         border: {
             headerBorder: string
             formBorder: string
+        }
+        captcha: {
+            border: string
+            background: string
         }
     }
 }
@@ -110,6 +118,10 @@ export const lightTheme = createTheme({
         border: {
             headerBorder: '1px solid #ebeced',
             formBorder: '#666666'
+        },
+        captcha: {
+            border: '#c4c4c4',
+            background: '#f9f9f9'
         }
     },
     components: {
@@ -166,6 +178,10 @@ export const darkTheme = createTheme({
         border: {
             headerBorder: '1px solid #242527',
             formBorder: '#c0c0c0'
+        },
+        captcha: {
+            border: '#535353',
+            background: '#222222'
         }
     },
     components: {
