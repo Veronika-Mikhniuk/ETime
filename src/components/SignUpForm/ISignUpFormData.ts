@@ -6,7 +6,7 @@ export interface ISignUpFormData {
     email: string
     username: string
     birthDate: Dayjs | null
-    role: 'student' | 'teacher'
+    roleName: string
     password: string
     confirmPassword: string
     recaptcha: string | null

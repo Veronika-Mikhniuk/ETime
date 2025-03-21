@@ -6,9 +6,19 @@ export const TextSecondary = styled('p')(({ theme }) => ({
     fontWeight: '400'
 }))
 
+export const TitlePrimary = styled('h1')(({ theme }) => ({
+    color: theme.palette.text.primary,
+    fontWeight: '600'
+}))
+
 export const TitleSecondary = styled('h1')(({ theme }) => ({
     color: theme.palette.text.secondary,
     fontWeight: '400'
+}))
+
+export const SpanPrimary = styled('span')(({ theme }) => ({
+    color: theme.palette.text.primary,
+    fontWeight: '600'
 }))
 
 export const NavLinkStyled = styled(NavLink)(({ theme }) => ({

@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '@mui/material/styles'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/redux/store'
 import { FormWrapper, CaptchaWrapper } from '@/components/styled/containers'
 import { Button } from '@/components/shared/Button'
 import { TextSecondary, TitleSecondary } from '@/components/styled/typography'
@@ -13,26 +15,31 @@ import { signUpValidationRules } from '@/utils/signUpValidation'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { IconButton, InputAdornment } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
+import { fetchSignUpAndVerify } from '@/redux/auth-slice'
 import './signUpForm.scss'
 
 export function SignUpForm() {
     const theme = useTheme()
     const navigate = useNavigate()
+    const dispatch = useDispatch<AppDispatch>()
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const recaptchaRef = useRef<ReCAPTCHA>(null)
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm<ISignUpFormData>()
+    const { register, handleSubmit, setValue, control, formState: { errors } } = useForm<ISignUpFormData>()
 
     const handleRecaptchaChange = (token: string | null) => {
         setValue('recaptcha', token)
     }
 
     const onSubmit = (data: ISignUpFormData) => {
-        const formattedData = {
+        const signUpData = {
             ...data,
+            language: 'en',
+            theme: theme.palette.mode,
             birthDate: dayjs(data.birthDate).toISOString() // Convert to ISO string
         }
-        console.log(formattedData)
+
+        dispatch(fetchSignUpAndVerify(signUpData))
     }
 
     return (
@@ -86,25 +93,31 @@ export function SignUpForm() {
 
                 <FormControlStyled>
                     <FormLabel>Select your role:</FormLabel>
-                    <RadioGroup
-                        {...register('role')}
-                        className="signup-form__radio-group"
-                    >
-                        <FormControlLabel
-                            value="student"
-                            control={<RadioStyled />}
-                            label="Student"
-                            sx={{
-                                color: theme.palette.text.secondary
-                            }} />
-                        <FormControlLabel
-                            value="teacher"
-                            control={<RadioStyled />}
-                            label="Teacher"
-                            sx={{
-                                color: theme.palette.text.secondary
-                            }} />
-                    </RadioGroup>
+
+                    <Controller
+                        name="roleName"
+                        control={control}
+                        defaultValue="Student"
+                        render={({ field }) => (
+                            <RadioGroup
+                                {...field}
+                                className="signup-form__radio-group"
+                            >
+                                <FormControlLabel
+                                    value="Student"
+                                    control={<RadioStyled />}
+                                    label="Student"
+                                    sx={{ color: theme.palette.text.secondary }}
+                                />
+                                <FormControlLabel
+                                    value="Teacher"
+                                    control={<RadioStyled />}
+                                    label="Teacher"
+                                    sx={{ color: theme.palette.text.secondary }}
+                                />
+                            </RadioGroup>
+                        )}
+                    />
                 </FormControlStyled>
 
                 <div className="signup-form__row">
